@@ -21,7 +21,7 @@ install:
   - mkdir -p snap/
   - cd snap/
 script:
-  - for file in ../../txt/*.html.brotli; do cat $file | brotli -d end | brotli > pages.brotli
+  - (for file in ../../txt/*.html.brotli; do (cat $file | brotli -d) done;) | brotli > pages.brotli
 after_success:
   - git add pages.brotli
   - git commit -m 'Added brotli snapshot'
